@@ -1,0 +1,1555 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VISHI.exe 💿✨</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      color: #4b174c;
+
+      background:
+        radial-gradient(circle at 15% 15%, #ffffff 0 2%, transparent 3%),
+        radial-gradient(circle at 80% 20%, #ffffff 0 1.5%, transparent 2%),
+        radial-gradient(circle at 30% 80%, #ffffff 0 1.5%, transparent 2%),
+        linear-gradient(
+          135deg,
+          #ffb7e8 0%,
+          #ffc7f2 25%,
+          #c8b7ff 55%,
+          #8eeaff 100%
+        );
+
+      background-size: auto, auto, auto, 400% 400%;
+
+      animation: skyMove 10s ease infinite;
+    }
+
+    @keyframes skyMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+
+    /* FLOATING Y2K DECORATIONS */
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+
+      font-size: 25px;
+
+      animation: sparkleFloat 6s linear infinite;
+    }
+
+    @keyframes sparkleFloat {
+
+      0% {
+        transform:
+          translateY(110vh)
+          rotate(0deg)
+          scale(.5);
+
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translateY(-120vh)
+          rotate(360deg)
+          scale(1.2);
+
+        opacity: 0;
+      }
+    }
+
+
+    /* MAIN */
+
+    .container {
+
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 18px;
+
+      position: relative;
+      z-index: 5;
+    }
+
+
+    /* Y2K WINDOW */
+
+    .card {
+
+      width: 100%;
+      max-width: 680px;
+
+      padding: 8px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffffff,
+          #ffb4e5,
+          #b7eaff,
+          #ffffff
+        );
+
+      border: 3px solid white;
+
+      box-shadow:
+        0 0 0 3px #d66dca,
+        0 15px 50px rgba(90, 30, 100, .3),
+        inset 0 0 25px white;
+
+      animation: windowOpen .8s ease;
+    }
+
+    @keyframes windowOpen {
+
+      from {
+        opacity: 0;
+        transform: scale(.7) rotate(-2deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+
+    .window {
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.95),
+          rgba(255,220,248,.88)
+        );
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      border: 2px solid #fff;
+
+      box-shadow:
+        inset 0 0 20px rgba(255,255,255,.9);
+    }
+
+
+    /* RETRO WINDOW BAR */
+
+    .window-bar {
+
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 12px;
+
+      color: white;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ff4fc3,
+          #b36cff,
+          #55dfff
+        );
+
+      border-bottom: 2px solid white;
+
+      text-shadow:
+        1px 1px 2px #7b2180;
+    }
+
+    .window-title {
+      flex: 1;
+    }
+
+    .window-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .window-buttons span {
+
+      width: 19px;
+      height: 19px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 4px;
+
+      background: linear-gradient(
+        #fff,
+        #c5b4ff
+      );
+
+      color: #762b83;
+
+      border: 1px solid #fff;
+
+      font-size: 11px;
+
+      box-shadow:
+        1px 1px 2px rgba(0,0,0,.3);
+    }
+
+
+    /* SCREEN */
+
+    .screen {
+
+      display: none;
+
+      padding: 30px 25px;
+
+      text-align: center;
+    }
+
+    .screen.active {
+
+      display: block;
+
+      animation: screenIn .7s ease;
+    }
+
+    @keyframes screenIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* EMOJI */
+
+    .main-emoji {
+
+      font-size: 65px;
+
+      filter:
+        drop-shadow(0 5px 5px rgba(120,30,120,.25));
+
+      animation:
+        emojiBounce 1.5s infinite;
+    }
+
+    @keyframes emojiBounce {
+
+      0%,100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(5deg);
+      }
+    }
+
+
+    /* HEADINGS */
+
+    h1 {
+
+      margin: 12px 0;
+
+      font-size:
+        clamp(2.3rem, 10vw, 4.4rem);
+
+      font-weight: 900;
+
+      letter-spacing: -2px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 5%,
+          #ff4fc3 35%,
+          #a93dff 65%,
+          #5bdfff 100%
+        );
+
+      -webkit-background-clip: text;
+
+      color: transparent;
+
+      -webkit-text-stroke: 1px white;
+
+      filter:
+        drop-shadow(3px 4px 0 #9c42a8)
+        drop-shadow(0 0 8px #fff);
+
+      animation: titleGlow 2s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+
+      from {
+        filter:
+          drop-shadow(3px 4px 0 #9c42a8)
+          drop-shadow(0 0 5px #fff);
+      }
+
+      to {
+        filter:
+          drop-shadow(3px 4px 0 #9c42a8)
+          drop-shadow(0 0 18px #fff);
+      }
+    }
+
+
+    h2 {
+
+      font-size: 1.6rem;
+
+      color: #8c328f;
+
+      text-shadow:
+        1px 1px white,
+        2px 2px #ff9bdf;
+    }
+
+
+    p {
+
+      line-height: 1.7;
+
+      font-size: 1.05rem;
+    }
+
+
+    .subtitle {
+
+      margin: 15px 0;
+
+      font-weight: bold;
+
+      color: #743475;
+    }
+
+
+    /* Y2K INFO BOX */
+
+    .y2k-box {
+
+      margin: 20px 0;
+
+      padding: 15px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff,
+          #ffd8f4
+        );
+
+      border: 2px dashed #d34bb7;
+
+      box-shadow:
+        inset 0 0 15px white,
+        4px 4px 0 rgba(146,61,150,.2);
+
+      font-size: .9rem;
+    }
+
+
+    /* BUTTONS */
+
+    .buttons {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+      margin-top: 25px;
+    }
+
+
+    button {
+
+      border: 2px solid white;
+
+      border-radius: 50px;
+
+      padding: 14px 28px;
+
+      min-width: 150px;
+
+      font-size: 1rem;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      color: white;
+
+      text-shadow:
+        1px 1px 2px #762879;
+
+      transition: .2s;
+
+      box-shadow:
+        0 5px 0 #9d3e92,
+        0 8px 15px rgba(100,30,100,.2);
+
+      background:
+        linear-gradient(
+          180deg,
+          #ff8bdc,
+          #d83bb4
+        );
+    }
+
+
+    button:hover {
+
+      transform:
+        translateY(-4px)
+        scale(1.04);
+
+      box-shadow:
+        0 8px 0 #9d3e92,
+        0 12px 20px rgba(100,30,100,.25);
+    }
+
+
+    button:active {
+
+      transform: translateY(3px);
+
+      box-shadow:
+        0 2px 0 #9d3e92;
+    }
+
+
+    .no-btn {
+
+      color: #7b327f;
+
+      text-shadow: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fff,
+          #d9d2ff
+        );
+
+      box-shadow:
+        0 5px 0 #9183c5;
+    }
+
+
+    .back-btn {
+
+      background:
+        linear-gradient(
+          180deg,
+          #79eaff,
+          #4b8fff
+        );
+
+      box-shadow:
+        0 5px 0 #4168b4;
+    }
+
+
+    .music-btn {
+
+      margin-top: 20px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #b88cff,
+          #783eea
+        );
+
+      box-shadow:
+        0 5px 0 #5425aa;
+    }
+
+
+    /* SAD CAT */
+
+    .sad-cat {
+
+      width: 230px;
+
+      max-width: 80%;
+
+      margin: 20px auto;
+
+      display: block;
+
+      border-radius: 20px;
+
+      border: 5px solid white;
+
+      box-shadow:
+        0 0 0 3px #d27bd2,
+        0 10px 25px rgba(60,20,70,.25);
+    }
+
+
+    .sad-text {
+
+      font-size: 1.5rem;
+
+      font-weight: 900;
+
+      color: #9d438f;
+
+      margin-bottom: 10px;
+    }
+
+
+    /* BIRTHDAY MESSAGE */
+
+    .birthday-card {
+
+      text-align: left;
+
+      margin-top: 20px;
+
+      padding: 22px;
+
+      max-height: 55vh;
+
+      overflow-y: auto;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.95),
+          rgba(255,221,247,.9)
+        );
+
+      border: 3px dotted #d65cc4;
+
+      box-shadow:
+        inset 0 0 20px white;
+    }
+
+
+    .birthday-card p {
+
+      margin-bottom: 20px;
+    }
+
+
+    .highlight {
+
+      font-weight: 900;
+
+      color: #ed3fae;
+
+      text-shadow:
+        1px 1px white;
+    }
+
+
+    .final {
+
+      text-align: center;
+
+      font-size: 1.3rem;
+
+      font-weight: 900;
+
+      color: #8f42b3;
+    }
+
+
+    /* CONFETTI */
+
+    .confetti {
+
+      position: fixed;
+
+      top: -20px;
+
+      width: 10px;
+      height: 15px;
+
+      z-index: 100;
+
+      pointer-events: none;
+
+      animation:
+        fall linear forwards;
+    }
+
+
+    @keyframes fall {
+
+      to {
+
+        transform:
+          translateY(110vh)
+          rotate(720deg);
+      }
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width:600px) {
+
+      .container {
+        padding: 10px;
+      }
+
+      .card {
+        border-radius: 18px;
+      }
+
+      .screen {
+        padding: 25px 16px;
+      }
+
+      .main-emoji {
+        font-size: 52px;
+      }
+
+      h1 {
+        font-size: 2.7rem;
+      }
+
+      h2 {
+        font-size: 1.35rem;
+      }
+
+      p {
+        font-size: .98rem;
+      }
+
+      .birthday-card {
+        padding: 17px;
+        max-height: 58vh;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .window-bar {
+        height: 38px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- FLOATING Y2K DECORATIONS -->
+
+  <div class="sparkle" style="left:5%; animation-delay:0s;">💿</div>
+  <div class="sparkle" style="left:15%; animation-delay:2s;">💖</div>
+  <div class="sparkle" style="left:28%; animation-delay:4s;">✨</div>
+  <div class="sparkle" style="left:45%; animation-delay:1s;">🦋</div>
+  <div class="sparkle" style="left:65%; animation-delay:3s;">⭐</div>
+  <div class="sparkle" style="left:82%; animation-delay:5s;">🎀</div>
+  <div class="sparkle" style="left:94%; animation-delay:2s;">💎</div>
+
+
+  <!-- MAIN -->
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="window">
+
+
+        <!-- WINDOW BAR -->
+
+        <div class="window-bar">
+
+          <div class="window-title">
+            💗 VISHI.exe — Birthday Surprise
+          </div>
+
+          <div class="window-buttons">
+            <span>−</span>
+            <span>□</span>
+            <span>×</span>
+          </div>
+
+        </div>
+
+
+        <!-- HOME SCREEN -->
+
+        <section
+          id="homeScreen"
+          class="screen active"
+        >
+
+          <div class="main-emoji">
+            💿
+          </div>
+
+          <h1>
+            HEY VISHI!
+          </h1>
+
+          <p class="subtitle">
+            ✧･ﾟ: *✧･ﾟ:* WELCOME TO YOUR SECRET BIRTHDAY PAGE *:･ﾟ✧*:･ﾟ✧
+          </p>
+
+
+          <div class="y2k-box">
+
+            💻 SYSTEM MESSAGE 💻
+
+            <br><br>
+
+            USER: <b>VISHI</b>
+
+            <br>
+
+            AGE: <b>17</b>
+
+            <br>
+
+            STATUS:
+            <b>ABSOLUTELY ICONIC 💅</b>
+
+            <br><br>
+
+            ⚠️ You have received a
+            <b>VERY IMPORTANT SURPRISE</b>.
+
+          </div>
+
+
+          <h2>
+            I have a surprise for you... 👀
+          </h2>
+
+          <p>
+            But first, you have to make a choice.
+            Choose carefully bestie 😭💗
+          </p>
+
+
+          <div class="buttons">
+
+            <button
+              onclick="showBirthday()"
+            >
+              YESSS 💖
+            </button>
+
+            <button
+              class="no-btn"
+              onclick="showSad()"
+            >
+              NO 😐
+            </button>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- SAD SCREEN -->
+
+        <section
+          id="sadScreen"
+          class="screen"
+        >
+
+          <div class="main-emoji">
+            😭
+          </div>
+
+          <h1>
+            ERROR 💀
+          </h1>
+
+          <img
+            class="sad-cat"
+            src="https://cataas.com/cat/sad"
+            alt="Sad cat"
+          >
+
+          <p class="sad-text">
+            TRY AGAIN, YOU SILLY 😭
+          </p>
+
+          <p>
+
+            <br>
+
+            SYSTEM ERROR:
+
+            <br>
+
+            <b>
+              WHY WOULD YOU CLICK NO???
+            </b>
+
+            <br><br>
+
+            The birthday surprise cannot continue
+            until you make the correct decision. 💀
+
+          </p>
+
+
+          <button
+            class="back-btn"
+            onclick="goBack()"
+          >
+            ← GO BACK
+          </button>
+
+        </section>
+
+
+
+        <!-- BIRTHDAY SCREEN -->
+
+        <section
+          id="birthdayScreen"
+          class="screen"
+        >
+
+          <div class="main-emoji">
+            🎂💿
+          </div>
+
+          <h1>
+            HAPPY 17TH!
+          </h1>
+
+          <h2>
+            VISHI!!! 🎀💗
+          </h2>
+
+          <p class="subtitle">
+            🚨🚨 SEVENTEEN ALERT 🚨🚨
+          </p>
+
+
+          <div class="y2k-box">
+
+            💿 NOW PLAYING: DANCING QUEEN 💿
+
+            <br>
+
+            ✨ BIRTHDAY MODE: ACTIVATED ✨
+
+            <br>
+
+            💗 MAIN CHARACTER MODE: ON 💗
+
+          </div>
+
+
+          <!-- BIRTHDAY MESSAGE -->
+
+          <div class="birthday-card">
+
+            <p>
+              Okay Vishi...
+              <br><br>
+
+              <span class="highlight">
+                HAPPY HAPPY HAPPY 17TH BIRTHDAYYYYY!!! 🎂💗🎀✨
+              </span>
+            </p>
+
+
+            <p>
+              GIRLLLLL seventeen???? 😭
+
+              Like HELLO???
+
+              When did that happen???
+
+              I swear we were just existing and suddenly
+              you're out here unlocking a whole new age like
+              it's a new level in a video game. 💀🎮
+            </p>
+
+
+            <p>
+              First of all, congratulations on surviving another
+              year of this absolutely chaotic thing called LIFE. 😭
+
+              You've officially reached seventeen, which means
+              you're now one year closer to adulthood...
+
+              but let's collectively ignore that because
+              responsibilities are scary and we're not ready. 💀
+            </p>
+
+
+            <p>
+              I hope 17 is literally EVERYTHING you want it to be.
+
+              Like genuinely.
+
+              I hope this year gives you the kind of happiness
+              that randomly hits you at 2 AM and makes you smile
+              for absolutely no reason. 🥹💗
+            </p>
+
+
+            <p>
+              I hope your camera roll gets filled with the
+              most random, chaotic, unhinged and beautiful memories.
+
+              I hope you take approximately 500 pictures every time
+              you go somewhere and then spend 40 minutes choosing
+              the ONE picture you're going to post. 😭📸
+            </p>
+
+
+            <p>
+              I hope you have late-night conversations,
+              spontaneous plans, inside jokes that make absolutely
+              no sense to anyone else, uncontrollable laughing,
+              random adventures and moments where you stop and think:
+
+              <br><br>
+
+              <b>
+                "Wait... my life is actually kinda slaying rn."
+              </b>
+
+              ✨
+            </p>
+
+
+            <p>
+              And please remember:
+
+              You don't have to have everything figured out.
+
+              You're seventeen.
+
+              You are allowed to change.
+
+              You're allowed to grow.
+
+              You're allowed to make mistakes.
+
+              You're allowed to change your mind.
+
+              You're allowed to have absolutely no idea
+              what you're doing sometimes. 😭
+            </p>
+
+
+            <p>
+              Life isn't supposed to be perfectly planned.
+
+              Sometimes the best memories are the completely
+              unplanned ones.
+
+              The random plans.
+
+              The stupid jokes.
+
+              The accidental adventures.
+
+              The nights where you laugh so much that your stomach hurts.
+
+              KEEP THOSE MOMENTS. 🫶🏻
+            </p>
+
+
+            <p>
+              And honestly...
+
+              NEVER let anyone convince you that you have to
+              become less YOU just to fit somewhere.
+
+              Don't become less funny.
+
+              Don't become less goofy.
+
+              Don't become less ambitious.
+
+              Don't become less loud.
+
+              Don't become less weird.
+
+              The right people will love the unfiltered version.
+
+              And that version?
+
+              <span class="highlight">
+                ICONIC. 💅
+              </span>
+            </p>
+
+
+            <p>
+              I hope this year brings you good people,
+              good memories, good music, good food,
+              good outfits, good pictures and GOOD NEWS. 💗
+
+              May your problems be tiny,
+              your happiness be huge,
+              your sleep schedule somehow survive,
+              and your bank account recover from every
+              questionable purchase. 😭💸
+            </p>
+
+
+            <p>
+              Please romanticize your life a little.
+
+              Wear the outfit.
+
+              Take the picture.
+
+              Make the playlist.
+
+              Dance in your room.
+
+              Eat the cake.
+
+              Buy the silly little thing.
+
+              Laugh at the stupid joke.
+
+              Send the random message.
+
+              Make the memory.
+
+              You're only seventeen once. 🎀
+            </p>
+
+
+            <p>
+              And when life gets difficult...
+
+              remember that one bad day doesn't mean
+              you have a bad life.
+
+              One bad grade doesn't define you.
+
+              One mistake doesn't define you.
+
+              One awkward moment DEFINITELY doesn't define you
+              because let's be honest, we're all embarrassing sometimes. 💀
+            </p>
+
+
+            <p>
+              So here's to seventeen.
+
+              Here's to becoming older without losing
+              the little things that make you happy.
+
+              Here's to new memories.
+
+              New experiences.
+
+              New dreams.
+
+              New inside jokes.
+
+              New pictures.
+
+              New playlists.
+
+              New chapters.
+
+              ✨✨✨
+            </p>
+
+
+            <p>
+              I hope when you look back at being 17 someday,
+              you remember it as a year where you laughed a LOT.
+
+              A year where you felt loved.
+
+              A year where you tried new things.
+
+              A year where you became more confident.
+
+              A year where you became even more YOU.
+            </p>
+
+
+            <p>
+              And today???
+
+              TODAY IS YOUR DAY.
+
+              So accept every compliment.
+
+              Eat the cake.
+
+              Take the pictures.
+
+              Put on your favourite outfit.
+
+              Play your favourite song.
+
+              And walk around like the main character.
+
+              Because respectfully...
+
+              <span class="highlight">
+                YOU ARE THE MAIN CHARACTER. 👑
+              </span>
+            </p>
+
+
+            <p>
+              So Vishi...
+
+              Here's your reminder that you're loved,
+              you're appreciated,
+              you're important,
+              and you deserve beautiful things.
+
+              I hope 17 is gentle with you.
+
+              I hope it surprises you.
+
+              I hope it makes you laugh.
+
+              I hope it gives you memories you'll never forget.
+
+              And most importantly...
+
+              I hope it makes you HAPPY. 💗
+            </p>
+
+
+            <p class="final">
+
+              HAPPY 17TH BIRTHDAY VISHIIII!!! 🎂🎀💿💗✨
+
+              <br><br>
+
+              💖 STAY ICONIC 💖
+
+              <br>
+
+              💿 STAY Y2K 💿
+
+              <br>
+
+              🦋 STAY YOU 🦋
+
+              <br><br>
+
+              LOVE YOUUUU 🫶🏻😭
+
+              <br><br>
+
+              NOW GO HAVE THE BEST DAY EVER!!!
+
+              🎉💃🏻🎂💗✨🦋💿
+
+            </p>
+
+          </div>
+
+
+          <!-- MUSIC -->
+
+          <audio
+            id="birthdaySong"
+            loop
+          >
+
+            <source
+              src="dancing-queen.mp3"
+              type="audio/mpeg"
+            >
+
+          </audio>
+
+
+          <button
+            class="music-btn"
+            onclick="playMusic()"
+          >
+            🎵 DANCE QUEEN MODE 💃🏻
+          </button>
+
+
+          <button
+            class="back-btn"
+            onclick="goBack()"
+          >
+            ← GO BACK
+          </button>
+
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+
+    /* =================================
+       SONG START POINT
+       =================================
+
+       Change this number if your MP3
+       reaches "You can dance, you can jive..."
+       at a slightly different time.
+
+       Start with 46 seconds.
+    */
+
+    const DANCING_QUEEN_START = 46;
+
+
+
+    /* =================================
+       SCREEN FUNCTIONS
+       ================================= */
+
+    function hideAllScreens() {
+
+      document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+          screen.classList.remove("active");
+
+        });
+
+    }
+
+
+    function showSad() {
+
+      hideAllScreens();
+
+      document
+        .getElementById("sadScreen")
+        .classList.add("active");
+
+    }
+
+
+    function showBirthday() {
+
+      hideAllScreens();
+
+      document
+        .getElementById("birthdayScreen")
+        .classList.add("active");
+
+
+      /* 🎉 CONFETTI */
+
+      createConfetti();
+
+
+      /* 🎵 START DANCING QUEEN */
+
+      const song =
+        document.getElementById("birthdaySong");
+
+
+      /*
+        This makes the song jump directly
+        to the "You can dance, you can jive..."
+        section.
+      */
+
+      song.currentTime =
+        DANCING_QUEEN_START;
+
+
+      song.play().catch(() => {
+
+        console.log(
+          "Autoplay blocked. Tap DANCE QUEEN MODE."
+        );
+
+      });
+
+    }
+
+
+
+    function goBack() {
+
+      hideAllScreens();
+
+      document
+        .getElementById("homeScreen")
+        .classList.add("active");
+
+    }
+
+
+
+    /* =================================
+       MUSIC BUTTON
+       ================================= */
+
+    function playMusic() {
+
+      const song =
+        document.getElementById("birthdaySong");
+
+
+      if (song.paused) {
+
+        /*
+          If the song hasn't started,
+          start at the Dancing Queen section.
+        */
+
+        if (song.currentTime < 1) {
+
+          song.currentTime =
+            DANCING_QUEEN_START;
+
+        }
+
+        song.play();
+
+      } else {
+
+        song.pause();
+
+      }
+
+    }
+
+
+
+    /* =================================
+       CONFETTI
+       ================================= */
+
+    function createConfetti() {
+
+      const total = 180;
+
+
+      for (
+        let i = 0;
+        i < total;
+        i++
+      ) {
+
+        const confetti =
+          document.createElement("div");
+
+
+        confetti.classList.add(
+          "confetti"
+        );
+
+
+        confetti.style.left =
+          Math.random() * 100 + "vw";
+
+
+        confetti.style.animationDuration =
+          (Math.random() * 3 + 2) + "s";
+
+
+        confetti.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+
+        confetti.style.background =
+          randomColor();
+
+
+        confetti.style.borderRadius =
+          Math.random() > .5
+            ? "50%"
+            : "2px";
+
+
+        document.body.appendChild(
+          confetti
+        );
+
+
+        setTimeout(() => {
+
+          confetti.remove();
+
+        }, 6500);
+
+      }
+
+    }
+
+
+
+    function randomColor() {
+
+      const colors = [
+
+        "#ff3eb5",
+        "#ff8bdc",
+        "#8c5cff",
+        "#5ce1ff",
+        "#ffffff",
+        "#ffd84d",
+        "#7fffd4"
+
+      ];
+
+
+      return colors[
+        Math.floor(
+          Math.random() * colors.length
+        )
+      ];
+
+    }
+
+
+
+    /* =================================
+       EXTRA FLOATING Y2K EMOJIS
+       ================================= */
+
+    setInterval(() => {
+
+      const item =
+        document.createElement("div");
+
+
+      item.className =
+        "sparkle";
+
+
+      const emojis = [
+
+        "💗",
+        "💿",
+        "🦋",
+        "✨",
+        "⭐",
+        "🎀",
+        "💎",
+        "💖"
+
+      ];
+
+
+      item.innerHTML =
+        emojis[
+          Math.floor(
+            Math.random() * emojis.length
+          )
+        ];
+
+
+      item.style.left =
+        Math.random() * 100 + "%";
+
+
+      item.style.animationDuration =
+        (Math.random() * 4 + 5) + "s";
+
+
+      document.body.appendChild(item);
+
+
+      setTimeout(() => {
+
+        item.remove();
+
+      }, 9000);
+
+
+    }, 1500);
+
+
+  </script>
+
+</body>
+</html>
+```
